@@ -102,6 +102,7 @@ func (s *Server) reconcileLocalConfig(ctx context.Context, configs []structs.Con
 			Entry:      entry,
 		}
 
+		// TODO(rpc-metrics): observe this apply
 		_, err := s.raftApply(structs.ConfigEntryRequestType, &req)
 		if err != nil {
 			return false, fmt.Errorf("Failed to apply config %s: %v", op, err)
